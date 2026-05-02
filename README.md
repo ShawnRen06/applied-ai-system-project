@@ -70,7 +70,7 @@ Testing layer (no API calls required)
 ### 1 — Clone and enter the directory
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/ShawnRen06/applied-ai-system-project.git
 cd applied-ai-system-project
 ```
 
@@ -186,6 +186,10 @@ Claude occasionally expressed *more* confidence than warranted when only one att
 **Collaboration with AI:**
 - *Helpful suggestion:* During development, Claude suggested structuring the agentic loop with an explicit iteration cap (`for _ in range(8)`) to prevent infinite tool-call loops — a subtle reliability issue I had not considered.
 - *Flawed suggestion:* Claude initially suggested using `altair<5` as a hard pin in `requirements.txt` (copied from the original project). This was unnecessary since the newer `altair` version is compatible, and the pin would have caused install conflicts on some systems.
+
+**What this project taught me about AI and problem-solving:**
+
+The most important lesson was that AI reliability is not binary — it is a spectrum you actively design for. Wrapping Claude in a tool-use loop forced me to think about *when* the AI is acting vs. *when* it is reasoning, and to test each layer independently. I also learned that separating pure logic (game rules) from AI-dependent logic (coaching) made the whole system far easier to debug and verify: I could confirm the game worked correctly before introducing any API calls. More broadly, this project showed me that the hardest part of building an AI system is not getting the model to produce a good answer — it is structuring the inputs, outputs, and fallbacks so the system behaves predictably even when the model is slow, overconfident, or unavailable.
 
 ---
 
